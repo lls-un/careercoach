@@ -1,0 +1,31 @@
+server:
+  port: 8080 # 服务端口
+  servlet:
+    context-path: / # 上下文路径
+
+spring:
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/careercoach?serverTime=Asia/Shanghai
+    username: root # 你的MySQL用户名
+    password: 123456 # 你的MySQL密码
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # Web 配置
+    web:
+      cors:
+        allowed-origins: "*"  # 允许跨域（前端调用）
+
+# MyBatis配置
+mybatis:
+#  mapper-locations: classpath:mapper/*.xml # Mapper.xml扫描路径
+  type-aliases-package: com.careercoach.entity # 实体类别名
+  configuration:
+    map-underscore-to-camel-case: true # 下划线转驼峰
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印SQL日志（开发环境）
+
+# 自定义配置 - Cal.com相关（替换为你的Cal.com实际配置）
+cal:
+  base-url: https://cal.com # Cal.com基础地址
+  booking-url: https://cal.com/李连帅-nwtigd/careercoach # 你的Cal.com预约基础链接（例：https://cal.com/zhangsan）
+  webhook-secret: 123456 # Cal.com Webhook秘钥（用于验签，可选）
+  api-key: cal_live_2eeb363203e5555d636b7669e5a7de7e
